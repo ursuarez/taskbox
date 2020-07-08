@@ -3,6 +3,23 @@ import React from 'react';
 
 import Task from './Task';
 
+import styled from 'styled-components';
+
+const TaskListContainer = styled.div`
+	border-radius: 10px;
+	border: 1px solid #06a6ba;
+	background: transparent;
+	box-shadow: 0px 6px 20px 0px rgb(116, 116, 116);
+
+	&.list-items .list-item:first-child {
+		border-radius: 10px 10px 0 0;
+	}
+
+	&.list-items .list-item:last-child {
+		border-radius: 0 0 10px 10px;
+	}
+`;
+
 function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
 	const events = {
 		onPinTask,
@@ -10,7 +27,7 @@ function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
 	};
 
 	const LoadingRow = (
-		<div className='loading-item'>
+		<div className='loading-item load'>
 			<span className='glow-checkbox' />
 			<span className='glow-text'>
 				<span>Loading</span> <span>cool</span> <span>state</span>
@@ -36,7 +53,7 @@ function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
 			<div className='list-items'>
 				<div className='wrapper-message'>
 					<span className='icon-check' />
-					<div className='title-message'>You have no tasks</div>
+					<div className='title-message'>You have no tasksss</div>
 					<div className='subtitle-message'>Sit back and relax</div>
 				</div>
 			</div>
@@ -49,11 +66,11 @@ function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
 	];
 
 	return (
-		<div className='list-items'>
+		<TaskListContainer className='list-items'>
 			{tasksInOrder.map((task) => (
 				<Task key={task.id} task={task} {...events} />
 			))}
-		</div>
+		</TaskListContainer>
 	);
 }
 

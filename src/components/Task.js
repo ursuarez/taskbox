@@ -1,5 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import styled from 'styled-components';
+
+import { colors } from './styles/colors';
+
+const { taskMainColor } = colors;
+
+const TaskContainer = styled.div`
+	border: 1px solid ${taskMainColor};
+`;
 
 export default function Task({
 	task: { id, title, state },
@@ -7,7 +16,7 @@ export default function Task({
 	onPinTask,
 }) {
 	return (
-		<div className={`list-item ${state}`}>
+		<TaskContainer className={`list-item ${state}`}>
 			<label className='checkbox'>
 				<input
 					type='checkbox'
@@ -33,7 +42,7 @@ export default function Task({
 					</a>
 				)}
 			</div>
-		</div>
+		</TaskContainer>
 	);
 }
 
